@@ -4,6 +4,7 @@ __pycache__/
 .DS_Store
 venv/
 staticfiles/
+migrations/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
