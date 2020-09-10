@@ -27,16 +27,13 @@ SECRET_KEY = '@kn59v8%(nfqvni827n3i1$z-ziq2t-bz%2_*5&z7epoqp@lm-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','registration-prod.eba-mqzz6su8.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['localhost','registration-prod.eba-mqzz6su8.us-west-2.elasticbeanstalk.com','register.whenweallvote.org']
 try:
     EC2_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4').text
     ALLOWED_HOSTS.append(EC2_IP)
 except requests.exceptions.RequestException:
     pass
 
-
-# EC2_IP = urllib.request.urlopen('http://169.254.169.254/latest/meta-data/local-ipv4').read()
-# ALLOWED_HOSTS.append(EC2_IP)
 
 
 # Application definition
