@@ -17,6 +17,11 @@ class Registration(models.Model):
     last_name=models.CharField(max_length=100,verbose_name='Last Name')
     zip=models.CharField(max_length=5,verbose_name='ZIP Code',validators=[validate_zip])
 
+    utm_source = models.CharField(blank=True, max_length=100)
+    utm_medium = models.CharField(blank=True, max_length=100)
+    utm_campaign = models.CharField(blank=True, max_length=100)
+
+
     def __str__(self):
         return self.first_name
 

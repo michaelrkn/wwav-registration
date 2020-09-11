@@ -6,6 +6,9 @@ from core.models import Zip
 
 from django.urls import reverse
 
+from django.shortcuts import get_object_or_404
+
+
 
 def index(request):
     context = {}
@@ -25,6 +28,16 @@ def register(request):
             # process the data in form.cleaned_data as required
 
             reg = form.save()
+
+
+            reg.utm_source = request.GET.get('utm_source', '')
+            reg.utm_medium = request.GET.get('utm_medium', '')
+            reg.utm_campaign = request.GET.get('utm_campaign', '')
+
+            reg.save()
+
+
+
             z = Zip.objects.get(zip=reg.zip)
             if z.mail_only:
                 return redirect(reverse('mail', kwargs={'zip': reg.zip}))
@@ -41,7 +54,8 @@ def register(request):
 
 
 def mail(request,zip):
-    z = Zip.objects.get(zip=zip)
+    # z = Zip.objects.get(zip=zip)
+    z = get_object_or_404(Zip, zip=zip)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = MailForm(request.POST)
