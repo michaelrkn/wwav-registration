@@ -12,6 +12,7 @@ core migrations init.py
 To do blue green deployment
 Clone env, go to rds go to default vpc security group 
 add inbound postgres rule with value of the new env security group (found in configuration>instance>edit)
+Then Deploy
 Swap env cname 
 Go to rds, remove old inbound rule
 Go to EB, Terminate old env
