@@ -20,7 +20,7 @@ class RegisterForm(ModelForm):
         #         'unique': "This URL is taken",
         #     }
         # }
-        fields = ['first_name', 'last_name','zip']
+        fields = ['first_name', 'last_name','zip','email','phone','can_text']
 
 
 class MailForm(ModelForm):

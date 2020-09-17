@@ -11,21 +11,11 @@ from django.shortcuts import get_object_or_404
 
 
 def index(request):
-    context = {}
-    return render(request, 'core/index.html', context)
-
-def success(request):
-    context = {}
-    return render(request, 'core/success.html', context)
-
-
-def register(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = RegisterForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
 
             reg = form.save()
 
@@ -39,18 +29,35 @@ def register(request):
 
 
             z = Zip.objects.get(zip=reg.zip)
-            if z.mail_only:
-                return redirect(reverse('mail', kwargs={'zip': reg.zip}))
+            return redirect(reverse('next', kwargs={'zip': reg.zip}))
 
-            # redirect to a new URL:
-            return redirect(z.link)
 
-        # if a GET (or any other method) we'll create a blank form
     else:
         form = RegisterForm()
 
     context = {'form': form}
-    return render(request, 'core/register.html', context)
+    return render(request, 'core/index.html', context)
+
+
+
+
+def next(request,zip):
+    z = get_object_or_404(Zip, zip=zip)
+    context = {'zip': z}
+    if z.state == 'ND':
+        return render(request, 'core/nd.html', context)
+
+    return render(request, 'core/next.html', context)
+
+
+
+
+
+
+def success(request):
+    context = {}
+    return render(request, 'core/success.html', context)
+
 
 
 def mail(request,zip):

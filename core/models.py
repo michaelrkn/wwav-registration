@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import models
 
 # Create your models here.
@@ -16,6 +17,16 @@ class Registration(models.Model):
     first_name=models.CharField(max_length=100,verbose_name='First Name')
     last_name=models.CharField(max_length=100,verbose_name='Last Name')
     zip=models.CharField(max_length=5,verbose_name='ZIP Code',validators=[validate_zip])
+
+    email = models.EmailField(verbose_name='email address',max_length=255)
+
+    phone_regex = RegexValidator(regex=r'^\d{10}$',
+                                 message="Phone number must be 10 digits and entered in the format: '1234567890'.")
+    phone = models.CharField(validators=[phone_regex], max_length=10,
+                             help_text="Format: 1234567890")
+    can_text = models.BooleanField(
+        verbose_name='By signing up, you consent to receive periodic text messages from When We All Vote (56005). Message and data rates may apply. Text HELP for more information. Text STOP to stop receiving messages.',
+        default=False)
 
     utm_source = models.CharField(blank=True, max_length=100)
     utm_medium = models.CharField(blank=True, max_length=100)

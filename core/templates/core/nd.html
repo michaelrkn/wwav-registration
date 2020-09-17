@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container">
+        <main>
+
+            <div class="my-5">
+                <h1>North Dakota doesn't require voter registration</h1>
+                <p class="lead">You're all set, just remember to bring identification to your polling place.</p>
+
+                <a href="https://whenweallvote.org" class="button">Back to Home</a>
+                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+            </div>
+
+
+        </main>
+    </div>
+
+
+
+{% endblock content %}
+

@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <div class="container">
+        <main>
+            {% if zip.mail_only %}
+            <div class="my-5">
+                <h1>Your state doesn't let you register online!</h1>
+                <h3>You can print out a form or request that one be mailed to you</h3>
+                <p class="lead">Click below to be redirected to your state website.</p>
+                <a href="{{ zip.link }}" class="button">GO</a>
+                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+
+            </div>
+            {% else %}
+            <div class="my-5">
+                <h1>Your state lets you register online!</h1>
+                <p class="lead">Click below to be redirected to your state website.</p>
+                <a href="{{ zip.link }}" class="button">GO</a>
+                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+            </div>
+            {% endif %}
+
+
+        </main>
+    </div>
+
+
+
+{% endblock content %}
+
