@@ -20,6 +20,7 @@ class Registration(models.Model):
     utm_source = models.CharField(blank=True, max_length=100)
     utm_medium = models.CharField(blank=True, max_length=100)
     utm_campaign = models.CharField(blank=True, max_length=100)
+    created_at=models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
@@ -30,6 +31,7 @@ class Mail(models.Model):
     city=models.CharField(max_length=100)
     state=models.CharField(max_length=2)
     zip=models.CharField(max_length=5,verbose_name='ZIP Code')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.street
