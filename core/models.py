@@ -51,7 +51,7 @@ class Mail(models.Model):
 class Zip(models.Model):
     zip=models.CharField(max_length=5)
     state=models.CharField(max_length=2)
-    mail_only=models.BooleanField()
+    mail_only=models.CharField(max_length=100)
     link=models.URLField()
 
     def __str__(self):

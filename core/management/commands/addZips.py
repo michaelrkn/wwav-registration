@@ -15,7 +15,7 @@ class Command(BaseCommand):
             reader = csv.reader(csvfile)
             next(reader)
             for row in reader:
-                z=Zip(zip=row[0],state=row[1],link=row[2],mail_only=bool(row[3]=='True'))
+                z=Zip(zip=row[0],state=row[1],link=row[2],mail_only=row[3])
                 z.save()
 
 

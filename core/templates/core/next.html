@@ -6,7 +6,7 @@
 
     <div class="container">
         <main>
-            {% if zip.mail_only %}
+            {% if zip.mail_only == 'mail' %}
             <div class="my-5">
                 <h1>Your state doesn't let you register online!</h1>
                 <h3>You can print out a form or request that one be mailed to you</h3>
@@ -15,9 +15,17 @@
                 <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
 
             </div>
-            {% else %}
+            {% elif zip.mail_only == 'online' %}
             <div class="my-5">
                 <h1>Your state lets you register online!</h1>
+                <p class="lead">Click below to be redirected to your state website.</p>
+                <a href="{{ zip.link }}" class="button">GO</a>
+                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+            </div>
+            {% else %}
+            <div class="my-5">
+                <h1>Your state doesn't let you register online!</h1>
+                <p class="lead">You can register in person at one of the locations listed on your state website.</p>
                 <p class="lead">Click below to be redirected to your state website.</p>
                 <a href="{{ zip.link }}" class="button">GO</a>
                 <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>

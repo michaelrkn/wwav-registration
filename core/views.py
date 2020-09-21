@@ -46,6 +46,9 @@ def next(request,zip):
     context = {'zip': z}
     if z.state == 'ND':
         return render(request, 'core/nd.html', context)
+    elif z.state == 'NH':
+        return render(request, 'core/nh.html', context)
+
 
     return render(request, 'core/next.html', context)
 
