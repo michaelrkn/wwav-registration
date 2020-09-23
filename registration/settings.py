@@ -156,3 +156,19 @@ EMAIL_USE_TLS = True
 # SERVER_EMAIL='donotreply@whenweallvote.org'
 
 ADMINS=[('Jesse', 'jesse@whenweallvote.org')]
+
+LOGGING={
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'null': {
+            'class': 'logging.NullHandler',
+        },
+    },
+    'loggers': {
+        'django.security.DisallowedHost': {
+            'handlers': ['null'],
+            'propagate': False,
+        },
+    },
+}
