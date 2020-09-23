@@ -145,3 +145,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_API_KEY']
+EMAIL_PORT = 587 #465
+EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'donotreply@whenweallvote.org'
+# SERVER_EMAIL='donotreply@whenweallvote.org'
+
+ADMINS=[('Jesse', 'jesse@whenweallvote.org')]
