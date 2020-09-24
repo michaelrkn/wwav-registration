@@ -9,10 +9,9 @@
             <div class="my-5">
                 <h1>North Dakota doesn't require voter registration</h1>
                 <p class="lead">You're all set, just remember to bring identification to your polling place.</p>
-                <p class="lead">Click below to be redirected to the North Dakota election website.</p>
+                <p class="lead">Click below to go to the North Dakota election website.</p>
                 <a href="{{ zip.link }}" class="button">GO</a>
-
-                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+                <p><a href="{% url 'index' %}">Click here to check another zip code.</a></p>
             </div>
 
 

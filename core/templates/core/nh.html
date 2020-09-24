@@ -7,12 +7,11 @@
         <main>
 
             <div class="my-5">
-                <h1>New Hampshire doesn't let you register online!</h1>
-                <p class="lead">You can either register in person, or contact your clerk and request a form to be mailed to you.</p>
-                <p class="lead">Click below to be redirected to the New Hampshire election website.</p>
+                <h1>Register to Vote in NH</h1>
+                <p class="lead">You can either register in person at your clerk's office, or contact your clerk and request a form to be mailed to you.</p>
+                <p class="lead">Click below to go to the New Hampshire election website to look up your clerk or learn more.</p>
                 <a href="{{ zip.link }}" class="button">GO</a>
-
-                <p>Based on your ZIP code, we detected that you live in {{ zip.state }}. If this is not correct, <a href="{% url 'index' %}">click to go back</a> and change your ZIP code.</p>
+                <p><a href="{% url 'index' %}">Click here to check another zip code.</a></p>
             </div>
 
 
