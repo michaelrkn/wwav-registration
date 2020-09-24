@@ -18,7 +18,7 @@ class Registration(models.Model):
     last_name=models.CharField(max_length=100,verbose_name='Last Name')
     zip=models.CharField(max_length=5,verbose_name='ZIP Code',validators=[validate_zip])
 
-    email = models.EmailField(verbose_name='email address',max_length=255)
+    email = models.EmailField(verbose_name='Email Address',max_length=255)
 
     phone_regex = RegexValidator(regex=r'^\d{10}$',
                                  message="Phone number must be 10 digits and entered in the format: '1234567890'.")
